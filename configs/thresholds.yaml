@@ -1,0 +1,13 @@
+# Release thresholds for the eval gate
+# Edit these values to change release criteria — no code changes needed.
+# See specs/EvalPlan.md for documentation.
+
+thresholds:
+  # Hard gates — CI fails if below these values
+  accuracy: 0.80
+  f1_score: 0.75
+
+  # Soft warnings — CI passes but logs a warning
+  precision: 0.70
+  recall: 0.70
+  latency_p95_ms: 500

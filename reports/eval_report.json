@@ -1,0 +1,43 @@
+{
+  "evaluated_at": "2026-03-08T19:28:18.910260+00:00",
+  "overall_pass": true,
+  "failed_hard_gates": [],
+  "soft_warnings": [],
+  "metrics": {
+    "accuracy": {
+      "status": "pass",
+      "gate_type": "HARD",
+      "threshold": 0.8,
+      "actual": 0.87,
+      "passes": true
+    },
+    "f1_score": {
+      "status": "pass",
+      "gate_type": "HARD",
+      "threshold": 0.75,
+      "actual": 0.83,
+      "passes": true
+    },
+    "precision": {
+      "status": "pass",
+      "gate_type": "SOFT",
+      "threshold": 0.7,
+      "actual": 0.85,
+      "passes": true
+    },
+    "recall": {
+      "status": "pass",
+      "gate_type": "SOFT",
+      "threshold": 0.7,
+      "actual": 0.81,
+      "passes": true
+    },
+    "latency_p95_ms": {
+      "status": "pass",
+      "gate_type": "SOFT",
+      "threshold": 500,
+      "actual": 312,
+      "passes": true
+    }
+  }
+}
