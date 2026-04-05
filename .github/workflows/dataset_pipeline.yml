@@ -1,0 +1,27 @@
+name: Dataset Pipeline CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-dataset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Generate dataset
+        run: python scripts/generate_dataset.py
+      - name: Label Studio export
+        run: python scripts/label_studio_export.py --mode simulate
+      - name: Validate data contract
+        run: python src/aispec/data_contract.py
+      - name: Split dataset
+        run: python scripts/split_dataset.py
+      - name: Run tests
+        run: pytest tests/ -v
