@@ -1,0 +1,7 @@
+{"id": "rec-0050", "input_text": "Not what I expected based on the description.", "label": "negative", "score": 0.81, "timestamp": "2026-03-08T12:05:00Z"}
+{"id": "rec-0048", "input_text": "The item arrived on time and works as described.", "label": "neutral", "score": 0.75, "timestamp": "2026-03-08T11:55:00Z"}
+{"id": "rec-0003", "input_text": "The item arrived on time and works as described.", "label": "neutral", "score": 0.75, "timestamp": "2026-03-08T08:10:00Z"}
+{"id": "rec-0028", "input_text": "The item arrived on time and works as described.", "label": "neutral", "score": 0.75, "timestamp": "2026-03-08T10:15:00Z"}
+{"id": "rec-0038", "input_text": "The item arrived on time and works as described.", "label": "neutral", "score": 0.75, "timestamp": "2026-03-08T11:05:00Z"}
+{"id": "rec-0006", "input_text": "The product quality exceeded my expectations.", "label": "positive", "score": 0.92, "timestamp": "2026-03-08T08:25:00Z"}
+{"id": "rec-0035", "input_text": "Not what I expected based on the description.", "label": "negative", "score": 0.81, "timestamp": "2026-03-08T10:50:00Z"}
