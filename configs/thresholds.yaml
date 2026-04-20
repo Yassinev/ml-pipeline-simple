@@ -1,13 +1,27 @@
-# Release thresholds for the eval gate
-# Edit these values to change release criteria — no code changes needed.
-# See specs/EvalPlan.md for documentation.
+# Eval Gate Thresholds
+# All values are MINIMUM acceptable (CI fails if metric < threshold).
+# NOTE: These thresholds are calibrated to the keyword-heuristic mock model
+#       used in the project skeleton.  Replace with real model thresholds
+#       (typically 0.85+ overall) once a fine-tuned model is integrated.
+#
+# Managed by: ML Lead
+# Last updated: 2026-04-19
 
-thresholds:
-  # Hard gates — CI fails if below these values
-  accuracy: 0.80
-  f1_score: 0.75
+overall:
+  macro_f1: 0.85   # mock baseline ~0.89 — 3 pp headroom per regression rule
+  accuracy: 0.85
+  coverage: 0.80
 
-  # Soft warnings — CI passes but logs a warning
-  precision: 0.70
-  recall: 0.70
-  latency_p95_ms: 500
+slices:
+  positive:    { f1: 0.75 }
+  negative:    { f1: 0.75 }
+  neutral:     { f1: 0.75 }
+  short_text:  { f1: 0.75 }
+  long_text:   { f1: 0.75 }
+  low_conf_gt: { f1: 0.75 }
+
+regression:
+  # Maximum allowed drop vs previous run (absolute)
+  max_macro_f1_drop: 0.03
+  max_slice_f1_drop: 0.05
+  max_coverage_drop: 0.05

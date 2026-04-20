@@ -1,5 +1,0 @@
-{"id": "rec-001", "input_text": "The product quality exceeded my expectations.", "label": "positive", "score": 0.92, "timestamp": "2026-03-08T08:00:00Z"}
-{"id": "rec-002", "input_text": "Delivery was extremely slow and packaging was damaged.", "label": "negative", "score": 0.88, "timestamp": "2026-03-08T08:05:00Z"}
-{"id": "rec-003", "input_text": "The item arrived on time and works as described.", "label": "neutral", "score": 0.75, "timestamp": "2026-03-08T08:10:00Z"}
-{"id": "rec-004", "input_text": "Absolutely love this purchase, will buy again.", "label": "positive", "score": 0.97, "timestamp": "2026-03-08T08:15:00Z"}
-{"id": "rec-005", "input_text": "Not what I expected based on the description.", "label": "negative", "score": 0.81, "timestamp": "2026-03-08T08:20:00Z"}

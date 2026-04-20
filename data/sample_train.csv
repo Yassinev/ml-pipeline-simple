@@ -1,0 +1,51 @@
+id,text,label,source,confidence_gt
+c4e13501,"Absolutely loved the experience, the team was incredibly helpful.",positive,web,0.87
+e6953215,Best purchase I have made in a long time.,positive,api,0.89
+0bce5605,The customer service resolved my issue immediately.,positive,web,0.96
+92773690,Setup took about 30 minutes following the guide.,neutral,api,0.91
+fdfc069d,"The update dramatically improved performance, very happy.",positive,mobile,0.88
+b49bc88b,Acceptable quality for the price point.,neutral,api,0.89
+ba82f69a,Multiple bugs that have not been fixed for months.,negative,mobile,0.86
+28a65d8b,Constant crashes make this completely unusable.,negative,web,0.91
+e73414cf,"Nothing worked as advertised, very frustrating.",negative,api,1.0
+c2fa05d8,"Very intuitive interface, I got productive on day one.",positive,web,0.95
+8ae8622a,"Fantastic service and quick delivery, will buy again.",positive,mobile,0.89
+4a1e821d,The new features are a game changer for my workflow.,positive,web,0.99
+653141db,The documentation covers the basics adequately.,neutral,api,0.88
+578e35b8,I have been using it for a week without issues so far.,neutral,mobile,0.98
+a117e730,Worst purchase decision I have made all year.,negative,web,0.98
+1f6e22ee,The packaging was standard and undamaged on arrival.,neutral,api,0.96
+bd388140,The documentation is misleading and inaccurate.,negative,mobile,0.88
+0fcf779d,"Typical product in its category, average.",neutral,api,0.87
+3f99e942,The onboarding was smooth and the support team was brilliant.,positive,api,0.85
+5c9522f5,Build quality feels cheap and it scratched easily.,negative,mobile,0.86
+b6578247,Outstanding quality and great value for money.,positive,mobile,0.86
+4f7b86ce,I am thoroughly impressed with the results.,positive,web,0.88
+fd263c19,I am extremely disappointed with the quality.,negative,api,0.97
+518d3839,Hidden fees that were never disclosed upfront.,negative,mobile,0.99
+f1b976a4,I asked for a refund and was ignored for weeks.,negative,api,0.89
+6563e3c5,"Five stars, exactly what I was looking for.",positive,mobile,0.96
+8ebb298d,The delivery was two weeks late with no communication.,negative,mobile,0.98
+0adc1e48,Works as expected with no complaints but nothing special.,neutral,web,0.99
+b8a7f4e9,This is by far the best tool I have used this year.,positive,web,0.95
+a4e62eeb,The API is functional and reasonably documented.,neutral,web,0.87
+435762e0,I regret buying this.,negative,mobile,0.89
+10cc4236,Delivery was fast and the packaging was excellent.,positive,mobile,0.89
+97c9bd8e,Support ticket open for three weeks with no resolution.,negative,mobile,0.88
+c41c01f5,"Reliable, fast, and easy to use.",positive,api,0.87
+f4c8ee9d,Updates are released on a predictable schedule.,neutral,web,0.96
+4294acff,The interface is confusing and counterintuitive.,negative,web,0.95
+79a9f7bb,Great attention to detail and superb craftsmanship.,positive,api,0.88
+572d586f,The performance degraded significantly after the last update.,negative,mobile,0.98
+bcc49e0b,Customer support was completely unresponsive and rude.,negative,api,0.86
+836855e7,It integrates with our existing tools without friction.,neutral,api,0.98
+a73dc04a,Do not waste your money on this.,negative,api,0.94
+7df69bb0,Performance is in line with what was advertised.,neutral,mobile,0.92
+3384bf44,"Terrible experience, the product broke after two days.",negative,mobile,0.87
+9e2aa8da,The product arrived on time and matches the description.,neutral,web,0.88
+876e3d0e,The feature set is comparable to alternatives.,neutral,web,0.93
+680561b8,Everything worked perfectly right out of the box.,positive,mobile,0.94
+07f245d1,The trial period gives enough time to evaluate it.,neutral,api,0.9
+107bdfda,Shipped and delivered according to the estimated date.,neutral,mobile,0.93
+0f537ef5,"The product exceeded all my expectations, highly recommend!",positive,mobile,0.87
+5155eaf9,"It does what it says, nothing more nothing less.",neutral,web,0.97

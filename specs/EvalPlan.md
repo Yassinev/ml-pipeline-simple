@@ -1,77 +1,101 @@
-# Evaluation Plan
-**Project:** ML Pipeline Sample  
-**Version:** 1.0  
-**Date:** 2026-03-08  
-**Status:** Draft
+# EvalPlan — AI Spec Pack
+
+**Version:** 1.0.0  
+**Last updated:** 2026-04-19
 
 ---
 
-## 1. Purpose
+## 1. Evaluation Objectives
 
-This document defines how model quality is measured, what thresholds constitute a passing release, and how evaluation is automated in CI.
+1. Verify model meets quality gates before every merge to `main`.
+2. Detect performance regressions vs the previous released version.
+3. Surface slice-level degradation that aggregate metrics hide.
 
-## 2. Evaluation Philosophy
+---
 
-Every merge to `main` MUST pass a quantitative eval gate. Metrics are compared against thresholds defined in `configs/thresholds.yaml`. Subjective reviews supplement but do NOT replace automated gates.
+## 2. Metrics
 
-## 3. Metrics & Thresholds
+| Metric | Formula | Primary? | Gate |
+|---|---|---|---|
+| Macro-F1 | Unweighted mean of per-class F1 | ✅ Yes | ≥ 0.85 |
+| Accuracy | Correct / Total | No | ≥ 0.82 |
+| Precision (macro) | Mean per-class precision | No | ≥ 0.83 |
+| Recall (macro) | Mean per-class recall | No | ≥ 0.83 |
+| Coverage | 1 − (uncertain / total) | No | ≥ 0.80 |
+| Latency p95 | 95th percentile wall time | ✅ Yes | ≤ 900 ms |
 
-| Metric | Description | Threshold | Criticality |
-|--------|-------------|-----------|-------------|
-| `accuracy` | Fraction of correct predictions | ≥ 0.80 | Hard gate (CI fails) |
-| `f1_score` | Harmonic mean of precision & recall | ≥ 0.75 | Hard gate (CI fails) |
-| `precision` | TP / (TP + FP) | ≥ 0.70 | Soft warning |
-| `recall` | TP / (TP + FN) | ≥ 0.70 | Soft warning |
-| `latency_p95_ms` | 95th percentile inference latency | ≤ 500 ms | Soft warning |
+---
 
-Thresholds are read from `configs/thresholds.yaml` — change the file, not the code.
+## 3. Evaluation Slices
 
-## 4. Evaluation Dataset
+At least 6 slices must be reported individually in `reports/metrics.json`:
 
-| Property | Value |
-|----------|-------|
-| Source | `data/sample_requests.jsonl` |
-| Size | ≥ 50 labelled records |
-| Split | 80% train / 20% eval |
-| Refresh cadence | Each sprint |
+| Slice ID | Dimension | Definition |
+|---|---|---|
+| S1 | Class: positive | All examples with `label=positive` |
+| S2 | Class: negative | All examples with `label=negative` |
+| S3 | Class: neutral | All examples with `label=neutral` |
+| S4 | Short text | `len(text) ≤ 50` chars |
+| S5 | Long text | `len(text) > 200` chars |
+| S6 | Low annotator confidence | `confidence_gt < 0.80` |
 
-## 5. Evaluation Procedure
+Each slice must have Macro-F1 ≥ 0.75 (soft warning below 0.80; hard fail below 0.75).
 
-### 5.1 Automated (CI Gate)
+---
+
+## 4. Thresholds & Gates
+
+All gates are enforced in `tests/test_eval_gate.py` by comparing `reports/metrics.json` to `configs/thresholds.yaml`.
+
+| Gate | Metric | Hard Fail |
+|---|---|---|
+| G1 | Overall Macro-F1 | < 0.85 |
+| G2 | Overall Accuracy | < 0.82 |
+| G3 | Coverage | < 0.80 |
+| G4 | Any slice Macro-F1 | < 0.75 |
+| G5 | Regression vs prev | Δ Macro-F1 < −0.03 |
+
+---
+
+## 5. Regression Rule
+
+A regression is declared when **any** of the following conditions hold:
+
+- Overall Macro-F1 decreases by more than **0.03** vs the last passing CI run.
+- Any slice F1 decreases by more than **0.05** vs the last passing CI run.
+- Coverage drops by more than **0.05**.
+
+The previous metrics are stored in `reports/metrics_prev.json` and compared automatically in `tests/test_eval_gate.py`.
+
+---
+
+## 6. Golden Set
+
+- File: `data/golden_set.jsonl`
+- Size: 30 examples (10 per class — balanced by design)
+- Refresh policy: Reviewed quarterly; examples may be added but never removed without team consensus.
+- Requirement: Every PR must run the full golden set; partial subsets not accepted.
+
+---
+
+## 7. Reporting
+
+`make eval-gate` writes results to `reports/metrics.json`:
+
+```json
+{
+  "overall": {
+    "macro_f1": 0.87,
+    "accuracy": 0.87,
+    "coverage": 0.93
+  },
+  "slices": {
+    "positive": { "f1": 0.90 },
+    "negative": { "f1": 0.86 },
+    "neutral":  { "f1": 0.85 },
+    "short_text":  { "f1": 0.82 },
+    "long_text":   { "f1": 0.88 },
+    "low_conf_gt": { "f1": 0.78 }
+  }
+}
 ```
-make eval-gate
-```
-Steps executed:
-1. Load `reports/metrics_example.json`
-2. Load thresholds from `configs/thresholds.yaml`
-3. Compare each metric to its threshold
-4. Exit `0` if all hard-gate metrics pass; exit `1` otherwise
-5. Write `reports/eval_report.json` with pass/fail details
-
-### 5.2 Manual Review (Pre-Release)
-- Reviewer inspects `reports/eval_report.json`
-- Reviewer checks for metric cliff drops (> 5% vs previous release)
-- Sign-off required in PR description
-
-## 6. Reporting
-
-All eval outputs are uploaded as CI artifacts:
-- `reports/eval_report.json` — machine-readable pass/fail per metric
-- `reports/metrics_example.json` — raw computed metrics
-
-Artifacts are retained for **30 days** in GitHub Actions.
-
-## 7. Failure Response
-
-| Scenario | Action |
-|----------|--------|
-| Hard gate metric below threshold | CI fails, PR blocked |
-| Soft warning metric below threshold | CI passes, comment added to PR |
-| Eval script crashes | CI fails, engineer investigates |
-| Dataset missing | CI fails, data team notified |
-
-## 8. Versioning
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0 | 2026-03-08 | Initial eval plan |

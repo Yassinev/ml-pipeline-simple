@@ -1,12 +1,16 @@
-.PHONY: test data-check eval-gate all
+.PHONY: test data-check eval-gate install lint
 
-all: test data-check eval-gate
+install:
+	pip install -r requirements.txt
+
+lint:
+	python -m flake8 src/ tests/ --max-line-length=120 --ignore=E501
 
 test:
-	pytest tests/ -v --tb=short
+	python -m pytest tests/ -v --ignore=tests/test_data_checks.py --ignore=tests/test_eval_gate.py
 
 data-check:
-	python src/aispec/data_contract.py
+	python -m pytest tests/test_data_checks.py -v
 
 eval-gate:
-	python src/aispec/eval_gate.py
+	python -m pytest tests/test_eval_gate.py -v

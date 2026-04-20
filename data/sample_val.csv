@@ -1,0 +1,11 @@
+id,text,label,source,confidence_gt
+5c68f518,I would give six stars if I could.,positive,api,0.86
+8b8422ce,Solid mid-range option without standout qualities.,neutral,api,0.94
+dce81861,The warranty claim process was a nightmare.,negative,mobile,0.95
+ac7b6bc1,"Neither impressed nor disappointed, it works.",neutral,web,0.97
+578dbce4,"Returned it the same day, completely useless.",negative,api,0.91
+8165c4ff,Overpriced and underdelivered in every way.,negative,web,0.95
+ab190f57,Took a few days to configure but now running smoothly.,neutral,api,0.93
+af38357c,Impressed by how consistently good the quality is.,positive,web,0.96
+7c1e798c,The size is as described and fits the intended use.,neutral,api,0.91
+f8c0a9dc,The tutorial made the learning curve non-existent.,positive,api,0.94

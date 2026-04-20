@@ -1,88 +1,68 @@
-# Data Specification & Data Contract
-**Project:** ML Pipeline Sample  
-**Version:** 1.0  
-**Date:** 2026-03-08  
-**Status:** Draft
+# DataSpec — AI Spec Pack
+
+**Version:** 1.0.0  
+**Last updated:** 2026-04-19
 
 ---
 
-## 1. Dataset Overview
+## 1. Overview
 
-| Property | Value |
-|----------|-------|
-| Format | JSONL (one JSON object per line) |
-| Location | `data/sample_requests.jsonl` |
-| Update Frequency | Per pipeline run |
-| Owner | ML Team |
+This document specifies the data requirements for training, validation, evaluation, and production inference.
 
-## 2. Schema Definition
+---
 
-Each record in the JSONL file MUST conform to the following schema:
+## 2. Datasets
 
-```json
-{
-  "id":          "string   — unique record identifier (UUID or slug)",
-  "input_text":  "string   — raw input text, 1–2048 characters",
-  "label":       "string   — ground-truth label from allowed set",
-  "score":       "float    — confidence or relevance score in [0.0, 1.0]",
-  "timestamp":   "string   — ISO-8601 datetime, e.g. 2026-03-08T10:00:00Z"
-}
-```
+| Name | Split | Format | Location | Size |
+|---|---|---|---|---|
+| `golden_set` | eval | JSONL | `data/golden_set.jsonl` | 30 examples |
+| `sample_train` | train | CSV | `data/sample_train.csv` | 50 rows |
+| `sample_val` | val | CSV | `data/sample_val.csv` | 20 rows |
 
-## 3. Field Constraints
+---
 
-| Field | Type | Required | Constraints |
-|-------|------|----------|-------------|
-| `id` | string | ✅ | Non-empty, unique within file |
-| `input_text` | string | ✅ | Length: 1–2048 chars |
-| `label` | string | ✅ | Must be in allowed label set |
-| `score` | float | ✅ | Range: [0.0, 1.0] |
-| `timestamp` | string | ✅ | Valid ISO-8601 format |
+## 3. Feature Specification
 
-### 3.1 Allowed Label Set
-```
-["positive", "negative", "neutral", "unknown"]
-```
+### 3.1 Input Features
 
-## 4. Data Quality Rules
+| Feature | Type | Range / Values | Nullable | Description |
+|---|---|---|---|---|
+| `text` | string | 1–4096 chars | No | Raw input text to classify |
+| `source` | string | `web`, `api`, `mobile` | Yes | Origin of the request |
+| `locale` | string | ISO 639-1+3166 | Yes | User locale (e.g. `en-US`) |
+| `user_tier` | string | `free`,`pro`,`enterprise` | Yes | Subscription tier |
 
-| Rule ID | Description | Severity |
-|---------|-------------|----------|
-| DQ-01 | No record may have a null/missing required field | ERROR |
-| DQ-02 | `score` must be within [0.0, 1.0] | ERROR |
-| DQ-03 | `label` must be in the allowed set | ERROR |
-| DQ-04 | `id` must be unique across all records | ERROR |
-| DQ-05 | `input_text` length must be ≥ 1 | ERROR |
-| DQ-06 | `timestamp` must parse as ISO-8601 | WARNING |
+### 3.2 Label Specification
 
-## 5. Data Contract
+| Label | Type | Values | Description |
+|---|---|---|---|
+| `label` | categorical | `positive`, `negative`, `neutral` | Ground-truth sentiment class |
+| `confidence_gt` | float | [0.0, 1.0] | Human annotator agreement score |
 
-The data contract is enforced programmatically by `src/aispec/data_contract.py`.  
-The validator exits with code `1` if any ERROR-level rule is violated.
+---
 
-### Contract Guarantees to Downstream
-- All delivered records have non-null required fields.
-- All `score` values are valid floats in [0, 1].
-- All `label` values belong to the allowed set.
+## 4. Preprocessing Pipeline
 
-### Contract Obligations of Upstream
-- Producer must validate data before writing to `data/`.
-- Schema changes require a version bump and spec update.
+1. **Normalise** — lowercase, strip leading/trailing whitespace.
+2. **Truncate** — hard-cap at 512 tokens (model limit); log truncation events.
+3. **Filter** — drop rows where `text` is null, empty, or whitespace-only after normalisation.
+4. **Encode** — tokenise using the project tokeniser (`src/tokeniser.py`).
 
-## 6. Data Lineage
+---
 
-```
-Raw Source → Preprocessing Script → data/sample_requests.jsonl → Data Validator → Pipeline
-```
+## 5. Data Quality Requirements
 
-## 7. Privacy & Compliance
+| Check | Rule | Severity |
+|---|---|---|
+| No empty `text` | All rows must have `len(text.strip()) > 0` | FAIL |
+| No duplicates | `(text, label)` pairs must be unique | FAIL |
+| Label coverage | All three labels must appear at least once | FAIL |
+| Class imbalance | No single class > 70 % of total | WARN |
+| Distribution shift | KS p-value > 0.05 vs reference distribution | WARN |
+| Source dominance | No single `source` value > 80 % | WARN |
 
-- Input data must be anonymized before storage.
-- No PII (names, emails, phone numbers) in `input_text`.
-- Data retention: 90 days unless otherwise specified.
+---
 
-## 8. Versioning
+## 6. Versioning
 
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0 | 2026-03-08 | Initial schema definition |
+Data assets are versioned with the pattern `YYYY-MM-DD-vN` (e.g. `2026-04-19-v1`). Breaking schema changes increment the major version in `DataContract.md`.

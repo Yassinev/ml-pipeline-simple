@@ -1,0 +1,38 @@
+{"id": "0f537ef5", "text": "The product exceeded all my expectations, highly recommend!", "label": "positive", "source": "mobile", "confidence_gt": 0.87}
+{"id": "8ae8622a", "text": "Fantastic service and quick delivery, will buy again.", "label": "positive", "source": "mobile", "confidence_gt": 0.89}
+{"id": "c4e13501", "text": "Absolutely loved the experience, the team was incredibly helpful.", "label": "positive", "source": "web", "confidence_gt": 0.87}
+{"id": "b8a7f4e9", "text": "This is by far the best tool I have used this year.", "label": "positive", "source": "web", "confidence_gt": 0.95}
+{"id": "b6578247", "text": "Outstanding quality and great value for money.", "label": "positive", "source": "mobile", "confidence_gt": 0.86}
+{"id": "3f99e942", "text": "The onboarding was smooth and the support team was brilliant.", "label": "positive", "source": "api", "confidence_gt": 0.85}
+{"id": "4f7b86ce", "text": "I am thoroughly impressed with the results.", "label": "positive", "source": "web", "confidence_gt": 0.88}
+{"id": "680561b8", "text": "Everything worked perfectly right out of the box.", "label": "positive", "source": "mobile", "confidence_gt": 0.94}
+{"id": "fdfc069d", "text": "The update dramatically improved performance, very happy.", "label": "positive", "source": "mobile", "confidence_gt": 0.88}
+{"id": "6563e3c5", "text": "Five stars, exactly what I was looking for.", "label": "positive", "source": "mobile", "confidence_gt": 0.96}
+{"id": "3384bf44", "text": "Terrible experience, the product broke after two days.", "label": "negative", "source": "mobile", "confidence_gt": 0.87}
+{"id": "bcc49e0b", "text": "Customer support was completely unresponsive and rude.", "label": "negative", "source": "api", "confidence_gt": 0.86}
+{"id": "fd263c19", "text": "I am extremely disappointed with the quality.", "label": "negative", "source": "api", "confidence_gt": 0.97}
+{"id": "8ebb298d", "text": "The delivery was two weeks late with no communication.", "label": "negative", "source": "mobile", "confidence_gt": 0.98}
+{"id": "a73dc04a", "text": "Do not waste your money on this.", "label": "negative", "source": "api", "confidence_gt": 0.94}
+{"id": "ba82f69a", "text": "Multiple bugs that have not been fixed for months.", "label": "negative", "source": "mobile", "confidence_gt": 0.86}
+{"id": "bd388140", "text": "The documentation is misleading and inaccurate.", "label": "negative", "source": "mobile", "confidence_gt": 0.88}
+{"id": "e73414cf", "text": "Nothing worked as advertised, very frustrating.", "label": "negative", "source": "api", "confidence_gt": 1.0}
+{"id": "a117e730", "text": "Worst purchase decision I have made all year.", "label": "negative", "source": "web", "confidence_gt": 0.98}
+{"id": "f1b976a4", "text": "I asked for a refund and was ignored for weeks.", "label": "negative", "source": "api", "confidence_gt": 0.89}
+{"id": "9e2aa8da", "text": "The product arrived on time and matches the description.", "label": "neutral", "source": "web", "confidence_gt": 0.88}
+{"id": "5155eaf9", "text": "It does what it says, nothing more nothing less.", "label": "neutral", "source": "web", "confidence_gt": 0.97}
+{"id": "b49bc88b", "text": "Acceptable quality for the price point.", "label": "neutral", "source": "api", "confidence_gt": 0.89}
+{"id": "0adc1e48", "text": "Works as expected with no complaints but nothing special.", "label": "neutral", "source": "web", "confidence_gt": 0.99}
+{"id": "578e35b8", "text": "I have been using it for a week without issues so far.", "label": "neutral", "source": "mobile", "confidence_gt": 0.98}
+{"id": "653141db", "text": "The documentation covers the basics adequately.", "label": "neutral", "source": "api", "confidence_gt": 0.88}
+{"id": "92773690", "text": "Setup took about 30 minutes following the guide.", "label": "neutral", "source": "api", "confidence_gt": 0.91}
+{"id": "7df69bb0", "text": "Performance is in line with what was advertised.", "label": "neutral", "source": "mobile", "confidence_gt": 0.92}
+{"id": "0fcf779d", "text": "Typical product in its category, average.", "label": "neutral", "source": "api", "confidence_gt": 0.87}
+{"id": "107bdfda", "text": "Shipped and delivered according to the estimated date.", "label": "neutral", "source": "mobile", "confidence_gt": 0.93}
+{"id": "9f45316d", "text": "I have been using this product for three months now and I must say it has genuinely transformed my daily workflow. The build quality is exceptional, the support team resolved every query within hours, and the updates keep making it better.", "label": "positive", "confidence_gt": 0.92}
+{"id": "690dbd53", "text": "After trying many alternatives over the years I can confidently say this is the most reliable and well-designed solution I have encountered. Customer service is prompt and the documentation is thorough and easy to follow even for beginners.", "label": "positive", "confidence_gt": 0.9}
+{"id": "46ba49f8", "text": "I purchased this product based on the glowing reviews but unfortunately my experience has been the complete opposite. Within a week it started showing serious defects, the support team was dismissive and unhelpful, and getting a refund was an exhausting ordeal.", "label": "negative", "confidence_gt": 0.91}
+{"id": "00ad3e43", "text": "This is by far the most disappointing purchase I have made in years. The performance degraded within days, the interface is cluttered and confusing, and despite multiple support tickets nothing has been resolved after six weeks of waiting.", "label": "negative", "confidence_gt": 0.89}
+{"id": "0bd7d3ea", "text": "The product performs as described in the specifications. Setup took around 45 minutes following the provided instructions and everything has been running without issues since. It covers the basic use cases adequately without any particular strengths or weaknesses.", "label": "neutral", "confidence_gt": 0.88}
+{"id": "d38cb558", "text": "It arrived and works great, honestly recommend it.", "label": "positive", "confidence_gt": 0.74}
+{"id": "b0bbd54e", "text": "Terrible quality, totally broken and useless.", "label": "negative", "confidence_gt": 0.71}
+{"id": "76f87e0e", "text": "The product arrived as described and seems fine.", "label": "neutral", "confidence_gt": 0.69}
