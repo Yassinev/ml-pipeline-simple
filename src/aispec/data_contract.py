@@ -1,4 +1,4 @@
-mport sys, csv, json, pathlib
+import sys, csv, json, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 CSV_FILES = [ROOT/"data"/"sample_train.csv", ROOT/"data"/"sample_val.csv"]
