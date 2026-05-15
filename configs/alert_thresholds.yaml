@@ -1,0 +1,24 @@
+# Alert Thresholds — AI Spec Pack
+# Used by: make slo-gate (tests/test_slo_gate.py)
+# Last updated: 2026-04-21
+
+slo:
+  availability_pct: 99.5        # minimum % uptime (rolling 30 days)
+  latency_p95_ms: 900           # max p95 latency in milliseconds
+  latency_p99_ms: 1800          # max p99 latency in milliseconds
+  error_rate_pct: 1.0           # max % of error responses
+  timeout_rate_pct: 0.5         # max % of timeout responses
+  coverage: 0.80                # min fraction of non-uncertain predictions
+  prediction_drift_ks: 0.15     # max KS distance vs baseline distribution
+
+alerts:
+  high_latency_p95_ms: 900      # WARNING threshold
+  critical_latency_p95_ms: 1500 # CRITICAL + auto-rollback
+  high_error_rate_pct: 1.0      # WARNING threshold
+  critical_error_rate_pct: 2.0  # CRITICAL + auto-rollback
+  low_coverage: 0.80            # WARNING threshold
+  drift_warning_ks: 0.15        # WARNING threshold
+
+regression:
+  max_macro_f1_drop: 0.03
+  max_coverage_drop: 0.05

@@ -1,0 +1,27 @@
+{
+  "overall": {
+    "macro_f1": 0.8929,
+    "accuracy": 0.8947,
+    "coverage": 1.0
+  },
+  "slices": {
+    "positive": {
+      "f1": 0.8696
+    },
+    "negative": {
+      "f1": 1.0
+    },
+    "neutral": {
+      "f1": 0.9565
+    },
+    "short_text": {
+      "f1": 0.9407
+    },
+    "long_text": {
+      "f1": 1.0
+    },
+    "low_conf_gt": {
+      "f1": 1.0
+    }
+  }
+}

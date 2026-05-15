@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-05-11",
+  "owner": "Yassine Belaid",
+  "policy": "default_deny",
+  "allowlist": [
+    {
+      "name": "classify_text",
+      "permission": "read",
+      "confirmation_required": false,
+      "enabled": true
+    },
+    {
+      "name": "get_model_version",
+      "permission": "read",
+      "confirmation_required": false,
+      "enabled": true
+    },
+    {
+      "name": "log_request",
+      "permission": "write",
+      "confirmation_required": false,
+      "enabled": true,
+      "notes": "Append-only. PII must be stripped before call."
+    },
+    {
+      "name": "flag_for_human_review",
+      "permission": "write",
+      "confirmation_required": false,
+      "enabled": true
+    },
+    {
+      "name": "update_model",
+      "permission": "write",
+      "confirmation_required": true,
+      "enabled": true,
+      "notes": "Destructive. Requires explicit user confirmation in same session."
+    }
+  ],
+  "blocked_examples": [
+    "delete_order",
+    "send_email",
+    "drop_table",
+    "export_data",
+    "access_database"
+  ]
+}

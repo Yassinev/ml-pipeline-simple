@@ -1,0 +1,10 @@
+{
+  "latency_p50_ms": 210,
+  "latency_p95_ms": 780,
+  "latency_p99_ms": 1400,
+  "error_rate_pct": 0.3,
+  "timeout_rate_pct": 0.1,
+  "availability_pct": 99.8,
+  "coverage": 0.93,
+  "prediction_drift_ks": 0.08
+}
